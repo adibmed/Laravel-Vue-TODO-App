@@ -1946,7 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: new Form({
-        title: 'Test'
+        title: ''
       }),
       todos: []
     };
@@ -1957,20 +1957,26 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/todo').then(function (res) {
         _this.todos = res.data;
-        console.log(res.data);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     saveData: function saveData() {
+      var _this2 = this;
+
       var data = new FormData();
       data.append('title', this.form.title);
-      axios.post('/api/todo', data); // .then(
-      //     console.log("✅ Todo added successfully")
-      // )
-      // .catch((error) => {
-      //     console.log("💔 " + error)
-      // })
+      axios.post('/api/todo', data).then(function (res) {
+        console.log("✅ Todo added successfully");
+
+        _this2.form.reset();
+
+        _this2.getTodos();
+      })["catch"](function (error) {
+        _this2.form.errors.record(error.response.data.errors);
+
+        console.log("💔 " + error);
+      });
     }
   },
   mounted: function mounted() {

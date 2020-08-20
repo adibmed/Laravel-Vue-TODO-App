@@ -13,7 +13,7 @@ class TodoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
         return Todo::latest()->get();
     }
 
@@ -24,7 +24,6 @@ class TodoController extends Controller
      */
     public function create()
     {
-       
     }
 
     /**
@@ -35,8 +34,16 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        
-        Todo::create($request->all()); 
+        $this->validate(
+            $request,
+            [
+                'title' => 'requires'
+            ],
+            [
+                'title.required' => 'Todo input field is required'
+            ]
+        );
+        Todo::create($request->all());
     }
 
     /**

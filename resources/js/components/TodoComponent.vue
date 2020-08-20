@@ -14,7 +14,7 @@
                     <button
                         class="btn btn-success"
                         type="submit"
-                        id="button-addon2"
+                        id="button-addon2" 
                     >
                         ADD TODO
                     </button>
@@ -37,7 +37,7 @@ export default {
     data: () => {
         return {
             form: new Form({
-                title: 'Test',
+                title: '',
             }),
             todos: []
         };
@@ -47,7 +47,6 @@ export default {
             axios.get('/api/todo')
             .then((res)=>{
                 this.todos = res.data;
-                console.log(res.data);
             })
             .catch(error => {
                 console.log(error);
@@ -58,12 +57,16 @@ export default {
             data.append('title', this.form.title);
    
             axios.post('/api/todo', data)
-            // .then(
-            //     console.log("✅ Todo added successfully")
-            // )
-            // .catch((error) => {
-            //     console.log("💔 " + error)
-            // })
+            .then((res)=>{
+                console.log("✅ Todo added successfully");
+                this.form.reset();
+                this.getTodos();
+            }
+            )
+            .catch((error) => {
+              this.form.errors.record(error.response.data.errors);
+                console.log("💔 " + error)
+            })
         } 
             
 
