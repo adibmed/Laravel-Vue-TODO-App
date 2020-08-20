@@ -10,6 +10,7 @@
                     aria-label="Add Todo"
                     aria-describedby="button-addon2"
                    :class="{'is-invalid' : form.errors.has('title')}"
+                   @keydown="form.errors.clear('title')"
                 />
           
                 <div class="input-group-append">
@@ -26,6 +27,7 @@
                 v-if="form.errors.has('title')"
                 v-text="form.errors.get('title')"
                 class="text-danger pt-3"
+                style="font-size: 20px;"
                 >
 
                 </span>

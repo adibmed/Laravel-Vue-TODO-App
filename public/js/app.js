@@ -1951,6 +1951,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37610,6 +37612,9 @@ var render = function() {
             },
             domProps: { value: _vm.form.title },
             on: {
+              keydown: function($event) {
+                return _vm.form.errors.clear("title")
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -37625,6 +37630,7 @@ var render = function() {
         _vm.form.errors.has("title")
           ? _c("span", {
               staticClass: "text-danger pt-3",
+              staticStyle: { "font-size": "20px" },
               domProps: { textContent: _vm._s(_vm.form.errors.get("title")) }
             })
           : _vm._e()
