@@ -75,8 +75,8 @@ export default {
             }
             )
             .catch((error) => {
-                this.form.errors.record(error.response.data.errors);
-                console.log("💔 " + error)
+                 this.form.errors.record(error.response.data.errors)
+                console.log("💔 💔 💔 💔 " + error.response.data.errors)
             })
         } 
             
