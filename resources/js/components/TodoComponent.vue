@@ -4,18 +4,18 @@
             <div class="input-group mb-3">
                 <input
                     type="text"
-                    class="form-control"
+                    class="form-control form-control-lg"
                     placeholder="Recipient's username"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                 />
                 <div class="input-group-append">
                     <button
-                        class="btn btn-outline-secondary"
-                        type="button"
+                        class="btn btn-success"
+                        type="submit"
                         id="button-addon2"
                     >
-                        Button
+                        ADD TODO
                     </button>
                 </div>
             </div>
