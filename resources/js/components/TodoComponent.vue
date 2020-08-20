@@ -3,7 +3,7 @@
         <form @submit.prevent="saveData">
             <div class="input-group mb-3 w-100">
                 <input
-                v-model="Form.title"
+                    v-model="form.title"
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Add Todo"
@@ -21,6 +21,14 @@
                 </div>
             </div>
         </form>
+        <div class="w-25">
+            <div 
+            v-for="todo in todos" 
+            v-bind:key="todo.id"
+            class="w-100">
+                    {{ todo.title }}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -28,20 +36,41 @@
 export default {
     data: () => {
         return {
-            Form: new Form({
-                title: '',
-            })
+            form: new Form({
+                title: 'Test',
+            }),
+            todos: []
         };
     },
     methods: {
+        getTodos() {
+            axios.get('/api/todo')
+            .then((res)=>{
+                this.todos = res.data;
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
         saveData(){
-            let data = new formData();
+            let data = new FormData(); 
             data.append('title', this.form.title);
-            axios.post('/api/todo', data);
-        }
+   
+            axios.post('/api/todo', data)
+            // .then(
+            //     console.log("✅ Todo added successfully")
+            // )
+            // .catch((error) => {
+            //     console.log("💔 " + error)
+            // })
+        } 
+            
+
     },
     mounted() {
-        console.log("Component mounted.");
+        console.log("🔥 Component mounted. 🚀");
+        this.getTodos();
     }
 };
 </script>

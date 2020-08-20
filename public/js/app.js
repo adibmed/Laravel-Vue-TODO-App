@@ -1934,23 +1934,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      Form: new Form({
-        title: ''
-      })
+      form: new Form({
+        title: 'Test'
+      }),
+      todos: []
     };
   },
   methods: {
+    getTodos: function getTodos() {
+      var _this = this;
+
+      axios.get('/api/todo').then(function (res) {
+        _this.todos = res.data;
+        console.log(res.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     saveData: function saveData() {
-      var data = new formData();
+      var data = new FormData();
       data.append('title', this.form.title);
-      axios.post('/api/todo', data);
+      axios.post('/api/todo', data); // .then(
+      //     console.log("✅ Todo added successfully")
+      // )
+      // .catch((error) => {
+      //     console.log("💔 " + error)
+      // })
     }
   },
   mounted: function mounted() {
-    console.log("Component mounted.");
+    console.log("🔥 Component mounted. 🚀");
+    this.getTodos();
   }
 });
 
@@ -37556,8 +37581,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.Form.title,
-                expression: "Form.title"
+                value: _vm.form.title,
+                expression: "form.title"
               }
             ],
             staticClass: "form-control form-control-lg",
@@ -37567,13 +37592,13 @@ var render = function() {
               "aria-label": "Add Todo",
               "aria-describedby": "button-addon2"
             },
-            domProps: { value: _vm.Form.title },
+            domProps: { value: _vm.form.title },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.Form, "title", $event.target.value)
+                _vm.$set(_vm.form, "title", $event.target.value)
               }
             }
           }),
@@ -37581,6 +37606,17 @@ var render = function() {
           _vm._m(0)
         ])
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "w-25" },
+      _vm._l(_vm.todos, function(todo) {
+        return _c("div", { key: todo.id, staticClass: "w-100" }, [
+          _vm._v("\n                " + _vm._s(todo.title) + "\n        ")
+        ])
+      }),
+      0
     )
   ])
 }
