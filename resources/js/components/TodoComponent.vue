@@ -9,7 +9,9 @@
                     placeholder="Add Todo"
                     aria-label="Add Todo"
                     aria-describedby="button-addon2"
+                   :class="{'is-invalid' : form.errors.has('title')}"
                 />
+          
                 <div class="input-group-append">
                     <button
                         class="btn btn-success"
@@ -20,6 +22,13 @@
                     </button>
                 </div>
             </div>
+                  <span 
+                v-if="form.errors.has('title')"
+                v-text="form.errors.get('title')"
+                class="text-danger pt-3"
+                >
+
+                </span>
         </form>
         <div class="w-25">
             <div 
@@ -64,7 +73,7 @@ export default {
             }
             )
             .catch((error) => {
-              this.form.errors.record(error.response.data.errors);
+                this.form.errors.record(error.response.data.errors);
                 console.log("💔 " + error)
             })
         } 
