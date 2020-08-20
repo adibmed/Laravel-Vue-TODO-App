@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="w-50">
         <form>
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 w-100">
                 <input
                     type="text"
                     class="form-control form-control-lg"
-                    placeholder="Recipient's username"
-                    aria-label="Recipient's username"
+                    placeholder="Add Todo"
+                    aria-label="Add Todo"
                     aria-describedby="button-addon2"
                 />
                 <div class="input-group-append">

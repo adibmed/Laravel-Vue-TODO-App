@@ -37533,15 +37533,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "w-50" }, [
       _c("form", [
-        _c("div", { staticClass: "input-group mb-3" }, [
+        _c("div", { staticClass: "input-group mb-3 w-100" }, [
           _c("input", {
             staticClass: "form-control form-control-lg",
             attrs: {
               type: "text",
-              placeholder: "Recipient's username",
-              "aria-label": "Recipient's username",
+              placeholder: "Add Todo",
+              "aria-label": "Add Todo",
               "aria-describedby": "button-addon2"
             }
           }),
