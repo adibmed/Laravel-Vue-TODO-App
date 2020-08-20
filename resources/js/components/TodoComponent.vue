@@ -3,6 +3,7 @@
         <form>
             <div class="input-group mb-3 w-100">
                 <input
+                v-model="Form.title"
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Add Todo"
@@ -26,7 +27,11 @@
 <script>
 export default {
     data: () => {
-        return {};
+        return {
+            Form: new Form({
+                title: '',
+            })
+        };
     },
     mounted() {
         console.log("Component mounted.");
