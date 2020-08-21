@@ -1966,13 +1966,117 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: new Form({
         title: ""
       }),
-      todos: ''
+      todos: "",
+      editmode: false
     };
   },
   methods: {
@@ -1985,6 +2089,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+    deleteTodo: function deleteTodo(e) {},
+    updateTodo: function updateTodo(e) {},
     saveData: function saveData() {
       var _this2 = this;
 
@@ -2001,10 +2107,10 @@ __webpack_require__.r(__webpack_exports__);
 
         console.log("💔 💔 💔 💔 " + error.response.data.errors);
       });
-    }
+    },
+    toggleTodo: function toggleTodo(e) {}
   },
   mounted: function mounted() {
-    console.log("🔥 Component mounted. 🚀");
     this.getTodos();
   }
 });
@@ -37593,7 +37699,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-75" }, [
+  return _c("div", { staticClass: "w-25" }, [
     _c(
       "form",
       {
@@ -37677,6 +37783,11 @@ var render = function() {
                         fill: "none",
                         "stroke-linecap": "round",
                         "stroke-linejoin": "round"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.toggleTodo(todo)
+                        }
                       }
                     },
                     [
@@ -37689,105 +37800,11 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "svg",
-                {
-                  staticClass: "icon icon-tabler icon-tabler-circle-check",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "36",
-                    height: "36",
-                    viewBox: "0 0 24 24",
-                    "stroke-width": "1.5",
-                    stroke: "#4CAF50",
-                    fill: "none",
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round"
-                  }
-                },
-                [
-                  _c("path", { attrs: { stroke: "none", d: "M0 0h24v24H0z" } }),
-                  _vm._v(" "),
-                  _c("circle", { attrs: { cx: "12", cy: "12", r: "9" } }),
-                  _vm._v(" "),
-                  _c("path", { attrs: { d: "M9 12l2 2l4 -4" } })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "font-weight-bolder" }, [
-              _c("span"),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: todo.title,
-                    expression: "todo.title"
-                  }
-                ],
-                attrs: { type: "text" },
-                domProps: { value: todo.title },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(todo, "title", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "ml-auto mr-2 d-flex align-items-center" },
-              [
-                _c("span", [
-                  _c(
+              todo.completed == true
+                ? _c(
                     "svg",
                     {
-                      staticClass: "icon icon-tabler icon-tabler-edit",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "36",
-                        height: "36",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "1.5",
-                        stroke: "#FFC107",
-                        fill: "none",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: { stroke: "none", d: "M0 0h24v24H0z" }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d: "M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("line", {
-                        attrs: { x1: "16", y1: "5", x2: "19", y2: "8" }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "icon icon-tabler icon-tabler-checkbox",
+                      staticClass: "icon icon-tabler icon-tabler-circle-check",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
                         width: "36",
@@ -37798,6 +37815,11 @@ var render = function() {
                         fill: "none",
                         "stroke-linecap": "round",
                         "stroke-linejoin": "round"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.toggleTodo(todo)
+                        }
                       }
                     },
                     [
@@ -37805,16 +37827,135 @@ var render = function() {
                         attrs: { stroke: "none", d: "M0 0h24v24H0z" }
                       }),
                       _vm._v(" "),
-                      _c("polyline", { attrs: { points: "9 11 12 14 20 6" } }),
+                      _c("circle", { attrs: { cx: "12", cy: "12", r: "9" } }),
                       _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"
-                        }
-                      })
+                      _c("path", { attrs: { d: "M9 12l2 2l4 -4" } })
                     ]
                   )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "font-weight-bolder" }, [
+              _vm.editmode == false || _vm.editmode != todo.id
+                ? _c("span", [_vm._v(_vm._s(todo.title))])
+                : _vm._e(),
+              _vm.editmode == todo.id
+                ? _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: todo.title,
+                        expression: "todo.title"
+                      }
+                    ],
+                    attrs: { type: "text" },
+                    domProps: { value: todo.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(todo, "title", $event.target.value)
+                      }
+                    }
+                  })
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "ml-auto mr-2 d-flex align-items-center" },
+              [
+                _c("span", [
+                  _vm.editmode != todo.id
+                    ? _c(
+                        "svg",
+                        {
+                          staticClass: "icon icon-tabler icon-tabler-edit",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "36",
+                            height: "36",
+                            viewBox: "0 0 24 24",
+                            "stroke-width": "1.5",
+                            stroke: "#FFC107",
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.editmode = todo.id
+                            }
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: { stroke: "none", d: "M0 0h24v24H0z" }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("line", {
+                            attrs: { x1: "16", y1: "5", x2: "19", y2: "8" }
+                          })
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.editmode == todo.id
+                    ? _c(
+                        "svg",
+                        {
+                          staticClass: "icon icon-tabler icon-tabler-checkbox",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "36",
+                            height: "36",
+                            viewBox: "0 0 24 24",
+                            "stroke-width": "1.5",
+                            stroke: "#4CAF50",
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.updateTodo(todo)
+                            }
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: { stroke: "none", d: "M0 0h24v24H0z" }
+                          }),
+                          _vm._v(" "),
+                          _c("polyline", {
+                            attrs: { points: "9 11 12 14 20 6" }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"
+                            }
+                          })
+                        ]
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("span", [
@@ -37832,6 +37973,11 @@ var render = function() {
                         fill: "none",
                         "stroke-linecap": "round",
                         "stroke-linejoin": "round"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteTodo(todo)
+                        }
                       }
                     },
                     [
@@ -37884,7 +38030,11 @@ var staticRenderFns = [
           staticClass: "btn btn-success",
           attrs: { type: "submit", id: "button-addon2" }
         },
-        [_vm._v("Add this to your list")]
+        [
+          _vm._v(
+            "\n                    Add this to your list\n                "
+          )
+        ]
       )
     ])
   }
