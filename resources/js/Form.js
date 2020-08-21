@@ -172,7 +172,7 @@ class Form {
 
     /**
      * Handle a successful form submission.
-     *
+    //  
      * @param {object} data
      */
     onSuccess(data) {
