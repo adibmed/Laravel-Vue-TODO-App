@@ -1948,18 +1948,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: new Form({
-        title: ''
+        title: ""
       }),
-      todos: []
+      todos: ''
     };
   },
   methods: {
@@ -1978,15 +1973,11 @@ __webpack_require__.r(__webpack_exports__);
       var data = new FormData();
       data.append('title', this.form.title);
       axios.post('/api/todo', data).then(function (res) {
-        console.log("✅ Todo added successfully");
-
         _this2.form.reset();
 
         _this2.getTodos();
       })["catch"](function (error) {
         _this2.form.errors.record(error.response.data.errors);
-
-        console.log("💔 💔 💔 💔 " + error.response.data.errors);
       });
     }
   },
@@ -37629,7 +37620,7 @@ var render = function() {
         _vm._v(" "),
         _vm.form.errors.has("title")
           ? _c("span", {
-              staticClass: "text-danger pt-3",
+              staticClass: "text-danger pt-3 pb-3",
               staticStyle: { "font-size": "20px" },
               domProps: { textContent: _vm._s(_vm.form.errors.get("title")) }
             })
@@ -37642,7 +37633,7 @@ var render = function() {
       { staticClass: "w-25" },
       _vm._l(_vm.todos, function(todo) {
         return _c("div", { key: todo.id, staticClass: "w-100" }, [
-          _vm._v("\n                " + _vm._s(todo.title) + "\n        ")
+          _vm._v("\n            " + _vm._s(todo.title) + "\n        ")
         ])
       }),
       0
@@ -50088,9 +50079,9 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 window.Form = _Form__WEBPACK_IMPORTED_MODULE_0__["default"];
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

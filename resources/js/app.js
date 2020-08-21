@@ -6,13 +6,13 @@
 
 require('./bootstrap');
 
+window.Vue = require('vue');
 
 
 import Form from './Form'
 window.Form= Form
 
 
-window.Vue = require('vue');
 
 
 /**
