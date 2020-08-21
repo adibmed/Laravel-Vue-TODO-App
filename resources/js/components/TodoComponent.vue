@@ -200,7 +200,16 @@ export default {
                 });
         },
         toggleTodo(e) {
-
+            e.completed = !e.completed;
+            let data = new FormData();
+            data.append('_method', 'PATCH')
+            if(e.completed) {
+                data.append('completed', 1);
+            } 
+            if(!e.completed) {
+                data.append('completed', 0);
+            }
+            axios.post('/api/todo'+e.id, data);
         }
     },
     mounted() { 
