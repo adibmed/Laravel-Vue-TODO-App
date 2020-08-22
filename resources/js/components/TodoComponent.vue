@@ -1,5 +1,5 @@
 <template>
-    <div class="w-25">
+    <div class="w-75">
         <form @submit.prevent="saveData">
             <div class="input-group mb-3 w-100">
                 <input
@@ -17,7 +17,7 @@
                         type="submit"
                         id="button-addon2"
                     >
-                        Add this to your list
+                       ADD TODO
                     </button>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     </svg>
                 </span>
 
-                <div class="font-weight-bolder">
+                <div class="font-weight-bolder text-dark">
                     <span v-if="editmode == false || editmode != todo.id">{{
                         todo.title
                     }}</span
@@ -209,7 +209,7 @@ export default {
             if(!e.completed) {
                 data.append('completed', 0);
             }
-            axios.post('/api/todo'+e.id, data);
+            axios.post('/api/todo/'+e.id, data);
         }
     },
     mounted() { 

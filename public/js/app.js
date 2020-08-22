@@ -2121,7 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
         data.append('completed', 0);
       }
 
-      axios.post('/api/todo' + e.id, data);
+      axios.post('/api/todo/' + e.id, data);
     }
   },
   mounted: function mounted() {
@@ -37713,7 +37713,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-25" }, [
+  return _c("div", { staticClass: "w-75" }, [
     _c(
       "form",
       {
@@ -37849,7 +37849,7 @@ var render = function() {
                 : _vm._e()
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "font-weight-bolder" }, [
+            _c("div", { staticClass: "font-weight-bolder text-dark" }, [
               _vm.editmode == false || _vm.editmode != todo.id
                 ? _c("span", [_vm._v(_vm._s(todo.title))])
                 : _vm._e(),
@@ -38044,11 +38044,7 @@ var staticRenderFns = [
           staticClass: "btn btn-success",
           attrs: { type: "submit", id: "button-addon2" }
         },
-        [
-          _vm._v(
-            "\n                    Add this to your list\n                "
-          )
-        ]
+        [_vm._v("\n                   ADD TODO\n                ")]
       )
     ])
   }
