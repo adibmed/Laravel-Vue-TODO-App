@@ -2,11 +2,11 @@
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
-.env
+/vendor 
 .env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+Screenshot from 2020-08-22 01-47-44.png
