@@ -2100,22 +2100,28 @@ __webpack_require__.r(__webpack_exports__);
         _this2.form.errors.record(error.response.data.errors);
       });
     },
-    updateTodo: function updateTodo(e) {},
-    saveData: function saveData() {
+    updateTodo: function updateTodo(e) {
       var _this3 = this;
+
+      this.editmode = false;
+      var data = new FormData();
+      data.append('_method', 'PATCH');
+      data.append('title', e.title);
+      axios.post('/api/todo/' + e.id, data)["catch"](function (error) {
+        _this3.form.errors.record(error.response.date.errors);
+      });
+    },
+    saveData: function saveData() {
+      var _this4 = this;
 
       var data = new FormData();
       data.append("title", this.form.title);
       axios.post("/api/todo", data).then(function (res) {
-        console.log("✅ Todo added successfully");
+        _this4.form.reset();
 
-        _this3.form.reset();
-
-        _this3.getTodos();
+        _this4.getTodos();
       })["catch"](function (error) {
-        _this3.form.errors.record(error.response.data.errors);
-
-        console.log("💔 💔 💔 💔 " + error.response.data.errors);
+        _this4.form.errors.record(error.response.data.errors);
       });
     },
     toggleTodo: function toggleTodo(e) {

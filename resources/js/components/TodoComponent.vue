@@ -192,21 +192,28 @@ export default {
                 this.form.errors.record(error.response.data.errors);
             })
         },
-        updateTodo(e) {},
+        updateTodo(e) { 
+            this.editmode = false;
+            let data = new FormData();
+            data.append('_method', 'PATCH');
+            data.append('title', e.title);
+            axios.post('/api/todo/'+e.id, data)
+            .catch((error) => {
+                this.form.errors.record(error.response.date.errors);
+            })
+        },
         saveData() {
             let data = new FormData();
             data.append("title", this.form.title);
 
             axios
                 .post("/api/todo", data)
-                .then(res => {
-                    console.log("✅ Todo added successfully");
+                .then(res => { 
                     this.form.reset();
                     this.getTodos();
                 })
                 .catch(error => {
-                    this.form.errors.record(error.response.data.errors);
-                    console.log("💔 💔 💔 💔 " + error.response.data.errors);
+                    this.form.errors.record(error.response.data.errors); 
                 });
         },
         toggleTodo(e) {
