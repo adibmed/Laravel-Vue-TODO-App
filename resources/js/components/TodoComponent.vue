@@ -181,7 +181,17 @@ export default {
                     console.log(error);
                 });
         },
-        deleteTodo(e) {},
+        deleteTodo(e) {
+            let data = new FormData();
+            data.append('_method', 'DELETE');
+            axios.post('/api/todo/' + e.id, data)
+            .then((res) => {
+                this.todos = res.data 
+            })
+            .catch((error) => {
+                this.form.errors.record(error.response.data.errors);
+            })
+        },
         updateTodo(e) {},
         saveData() {
             let data = new FormData();

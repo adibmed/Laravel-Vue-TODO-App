@@ -2089,21 +2089,31 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    deleteTodo: function deleteTodo(e) {},
+    deleteTodo: function deleteTodo(e) {
+      var _this2 = this;
+
+      var data = new FormData();
+      data.append('_method', 'DELETE');
+      axios.post('/api/todo/' + e.id, data).then(function (res) {
+        _this2.todos = res.data;
+      })["catch"](function (error) {
+        _this2.form.errors.record(error.response.data.errors);
+      });
+    },
     updateTodo: function updateTodo(e) {},
     saveData: function saveData() {
-      var _this2 = this;
+      var _this3 = this;
 
       var data = new FormData();
       data.append("title", this.form.title);
       axios.post("/api/todo", data).then(function (res) {
         console.log("✅ Todo added successfully");
 
-        _this2.form.reset();
+        _this3.form.reset();
 
-        _this2.getTodos();
+        _this3.getTodos();
       })["catch"](function (error) {
-        _this2.form.errors.record(error.response.data.errors);
+        _this3.form.errors.record(error.response.data.errors);
 
         console.log("💔 💔 💔 💔 " + error.response.data.errors);
       });
