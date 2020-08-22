@@ -1,19 +1,21 @@
 <template>
-    <div class="w-75">
+<div class="container d-flex justify-content-center">
+    <div class="col-12 col-md-8 lg-col-6">
         <form @submit.prevent="saveData">
-            <div class="input-group mb-3 w-100">
+            <div class="input-group neumorphism mb-5 p-0 w-100">
                 <input
                     v-model="form.title"
                     :class="{ 'is-invalid': form.errors.has('title') }"
                     type="text"
-                    class="form-control form-control-lg"
+                    class="form-control form-control-lg border-0 font-weight-bold"
                     @keydown="form.errors.clear('title')"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
+                    placeholder="Write a Todo here"
                 />
                 <div class="input-group-append">
                     <button
-                        class="btn btn-success"
+                        class="btn add-btn font-weight-bold"
                         type="submit"
                         id="button-addon2"
                     >
@@ -32,7 +34,7 @@
             <div
                 v-for="todo in todos"
                 :key="todo.id"
-                class="w-100 d-flex align-items-center p-3 bg-white border-bottom"
+                class="w-100 d-flex align-items-center mt-3 p-3 bg-transparent neumorphism"
             >
                 <span class="mr-2">
                     <svg
@@ -44,7 +46,7 @@
                         height="36"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
-                        stroke="#FFC107"
+                        stroke="#FFF"
                         fill="none"
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -61,7 +63,7 @@
                         height="36"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
-                        stroke="#4CAF50"
+                        stroke="#3ae200"
                         fill="none"
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -72,7 +74,7 @@
                     </svg>
                 </span>
 
-                <div class="font-weight-bolder text-dark">
+                <div class="font-weight-bolder ">
                     <span v-if="editmode == false || editmode != todo.id">{{
                         todo.title
                     }}</span
@@ -94,7 +96,7 @@
                             height="36"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
-                            stroke="#FFC107"
+                            stroke="#FFF"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -117,7 +119,7 @@
                             height="36"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
-                            stroke="#4CAF50"
+                            stroke="#FFF"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -138,7 +140,7 @@
                             height="36"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
-                            stroke="#FF5722"
+                            stroke="#FFF"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -158,6 +160,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 <script>
 export default {
@@ -212,8 +215,9 @@ export default {
                     this.form.reset();
                     this.getTodos();
                 })
-                .catch(error => {
+                .catch((error) => {
                     this.form.errors.record(error.response.data.errors); 
+                     
                 });
         },
         toggleTodo(e) {
@@ -234,3 +238,51 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c4c4c4;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #c4c4c4;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #c4c4c4;
+}
+
+.input-group {
+    height: 67px!important;
+}
+ 
+ input[type="text"] {
+     background: none;
+     outline: none;
+     height: 100%;
+     color: white;
+ }
+  input[type="text"]:focus {
+      outline: none!important;
+      border: none!important;
+  }
+
+  .add-btn {
+      background: none;
+      color: white;
+      border-radius: 0 30px 30px 0;
+  }
+  .add-btn:hover {
+     color: #ffffff;
+    background: #afafaf;
+  }
+
+.neumorphism{
+    border-radius: 30px!important;
+    background: #6a4dff;
+    box-shadow:  15px 15px 30px #372885, 
+                 -15px -15px 30px #9d72ff!important; 
+}
+</style>

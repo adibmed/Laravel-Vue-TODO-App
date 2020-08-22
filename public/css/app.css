@@ -10907,7 +10907,12 @@ a.text-dark:focus {
 body {
   width: 100vw;
   height: 100vh;
-  background: #4aaff4;
-  background: radial-gradient(circle, #4aaff4 32%, #4a4ef4 100%);
+  background-color: #6a4dff;
+}
+
+.app-title {
+  top: 10%;
+  font-weight: 900;
+  color: #fbfbfb !important;
 }
 
