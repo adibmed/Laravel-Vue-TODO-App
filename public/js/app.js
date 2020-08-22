@@ -38415,7 +38415,7 @@ var render = function() {
                     type: "text",
                     "aria-label": "Recipient's username",
                     "aria-describedby": "button-addon2",
-                    placeholder: "Write a Todo here"
+                    placeholder: "Write a TODO here"
                   },
                   domProps: { value: _vm.form.title },
                   on: {

@@ -11,7 +11,7 @@
                     @keydown="form.errors.clear('title')"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
-                    placeholder="Write a Todo here"
+                    placeholder="Write a TODO here"
                 />
                 <div class="input-group-append">
                     <button
