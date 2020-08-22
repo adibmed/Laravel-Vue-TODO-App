@@ -1,5 +1,5 @@
 <template>
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center position-absolute">
     <div class="col-12 col-md-8 lg-col-6">
         <form @submit.prevent="saveData">
             <div class="input-group neumorphism mb-5 p-0 w-100">
@@ -46,7 +46,7 @@
                         height="36"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
-                        stroke="#FFF"
+                        stroke="#efefef"
                         fill="none"
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -75,7 +75,7 @@
                 </span>
 
                 <div class="font-weight-bolder ">
-                    <span v-if="editmode == false || editmode != todo.id">{{
+                    <span class="f-20" v-if="editmode == false || editmode != todo.id">{{
                         todo.title
                     }}</span
                     ><input
@@ -96,7 +96,7 @@
                             height="36"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
-                            stroke="#FFF"
+                            stroke="#efefef"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -119,7 +119,7 @@
                             height="36"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
-                            stroke="#FFF"
+                            stroke="#efefef"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -140,7 +140,7 @@
                             height="36"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
-                            stroke="#FFF"
+                            stroke="#efefef"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -240,7 +240,9 @@ export default {
 </script>
 
 <style scoped>
-
+.container {
+    top: 25%;
+}
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #c4c4c4;
   opacity: 1; /* Firefox */
@@ -278,11 +280,13 @@ export default {
      color: #ffffff;
     background: #afafaf;
   }
-
+.f-20 {
+    font-size: 22px;
+    color: #efefef;
+}
 .neumorphism{
     border-radius: 30px!important;
-    background: #6a4dff;
-    box-shadow:  15px 15px 30px #372885, 
-                 -15px -15px 30px #9d72ff!important; 
+box-shadow:  8px 8px 18px #3f2d96, 
+             -8px -8px 18px #956dff;
 }
 </style>
